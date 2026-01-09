@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="department_tree_view" model="ir.ui.view">
+        <field name="name">school.department.tree</field>
+        <field name="model">school.department</field>
+        <field name="arch" type="xml">
+            <tree default_order="code">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="establishment_date"/>
+                <field name="head_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="department_form_view" model="ir.ui.view">
+        <field name="name">school.department.tree</field>
+        <field name="model">school.department</field>
+        <field name="arch" type="xml">
+            <form string="Khoa">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="establishment_date"/>
+                        <field name="head_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="department_action" model="ir.actions.act_window">
+        <field name="name">Khoa</field>
+        <field name="res_model">school.department</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

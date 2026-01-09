@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="school_menu_root"
+        name="Quản lý trường học"
+        sequence="10"/>
+    <menuitem
+        id="school_menu_department"
+        name="Khoa"
+        parent="school_menu_root"
+        action="department_action"
+        sequence="5"/>
+    <menuitem
+        id="school_menu_academic_year"
+        name="Năm học"
+        parent="school_menu_root"
+        action="academic_year_action"
+        sequence="11"/>
+    <menuitem
+        id="school_menu_student"
+        name="Sinh viên"
+        parent="school_menu_root"
+        action="student_action"
+        sequence="10"/>
+    <menuitem
+        id="school_menu_class"
+        name="Lớp"
+        parent="school_menu_root"
+        action="class_action"
+        sequence="7"/>
+    <menuitem
+        id="school_menu_teacher"
+        name="Giảng viên"
+        parent="school_menu_root"
+        action="teacher_action"
+        sequence="8"/>
+    <menuitem
+        id="school_menu_subject"
+        name="Môn học"
+        parent="school_menu_root"
+        action="subject_action"
+        sequence="9"/>
+</odoo>

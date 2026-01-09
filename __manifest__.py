@@ -1,0 +1,22 @@
+{
+    'name': 'School Management',
+    'version': '1.0',
+    'summary': 'Hệ thống quản lý trường học',
+    'description': 'Bắt đầu với quản lý sinh viên',
+    'category': 'Education',
+    'author': 'Dũng',
+    'depends': ['base'],
+    'data': [
+        'security/school_security.xml',
+        'security/ir.model.access.csv',
+        'views/student_views.xml',
+        'views/department_views.xml',
+        'views/class_views.xml',
+        'views/teacher_views.xml',
+        'views/subject_views.xml',
+        'views/academic_year_views.xml',
+        'views/menus.xml',
+    ],
+    'application': True,
+    'installable': True,
+}

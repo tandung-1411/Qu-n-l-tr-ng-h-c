@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="teacher_tree_view" model="ir.ui.view">
+        <field name="name">school.teacher.tree</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <tree default_order="code">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="degree"/>
+                <field name="department_id"/>
+                <field name="email"/>
+            </tree>
+        </field>
+    </record>
+    <record id="teacher_form_view" model="ir.ui.view">
+        <field name="name">school.teacher.tree</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form string="Giáo viên">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="name"/>
+                            <field name="degree"/>
+                            <field name="major"/>
+                        </group>
+                        <group>
+                            <field name="department_id"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Khoa làm trưởng">
+                            <field name="department_head_ids"/>
+                        </page>
+                        <page string="Lớp cố vấn">
+                            <field name="advised_class_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="teacher_action" model="ir.actions.act_window">
+        <field name="name">Giảng viên</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

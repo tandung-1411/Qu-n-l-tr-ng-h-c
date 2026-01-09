@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="student_tree_view" model="ir.ui.view">
+        <field name="name">school.student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <tree default_order="code">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="birth_date"/>
+                <field name="gender"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="class_id"/>
+                <field name="department_id"/>
+                <field name="gpa_4" string="GPA (hệ 4)" widget="float" options="{'precision': 2}"/>
+                <field name="average_10" string="Điểm TB (hệ 10)" widget="float" options="{'precision': 2}"/>
+                <field name="academic_performance"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+    <record id="student_form_view" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form string="Sinh viên">
+                <header>
+                    <field name="status" widget="statusbar" clickable="1"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Xuất sắc" bg_color="bg-success"
+                            attrs="{'invisible': [('academic_performance', '!=', 'excellent')]}"/>
+                    <widget name="web_ribbon" title="Giỏi" bg_color="bg-info"
+                            attrs="{'invisible': [('academic_performance', '!=', 'good')]}"/>
+                    <widget name="web_ribbon" title="Khá" bg_color="bg-primary"
+                            attrs="{'invisible': [('academic_performance', '!=', 'fair')]}"/>
+                    <widget name="web_ribbon" title="Trung bình" bg_color="bg-warning"
+                            attrs="{'invisible': [('academic_performance', '!=', 'average')]}"/>
+                    <widget name="web_ribbon" title="Yếu" bg_color="bg-danger"
+                            attrs="{'invisible': [('academic_performance', '!=', 'weak')]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Họ và tên"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="birth_date"/>
+                            <field name="gender"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                        </group>
+                        <group>
+                            <field name="class_id"/>
+                            <field name="department_id" readonly="1"/>
+                            <field name="gpa_4" widget="statinfo" string="GPA (hệ 4)" readonly="1"/>
+                            <field name="average_10" widget="statinfo" string="Điểm TB (hệ 10)" readonly="1"/>
+                            <field name="academic_performance" widget="badge" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Đăng ký tín chỉ">
+                            <field name="enrollment_ids">
+                                <tree editable="bottom">
+                                    <field name="year_id"/>
+                                    <field name="semester_id"/>
+                                    <field name="subject_id"/>
+                                    <field name="teacher_id"/>
+                                    <field name="credits"/>
+                                    <field name="state" widget="badge" options="{'tag': 'span'}"
+                                           decoration-info="state=='registered'"
+                                           decoration-primary="state=='studying'"
+                                           decoration-success="state=='completed'"
+                                           decoration-danger="state=='cancelled'"/>
+                                </tree>
+                                <form string="Đăng ký môn mới">
+                                    <group>
+                                        <field name="year_id" required="1"/>
+                                        <field name="semester_id" required="1" domain="[('year_id', '=', year_id)]"/>
+                                        <field name="subject_id" required="1"/>
+                                        <field name="teacher_id"/>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Bảng điểm">
+                            <field name="grade_ids">
+                                <tree editable="bottom">
+                                    <field name="subject_id"/>
+                                    <field name="semester_id"/>
+                                    <field name="attendance_score"/>
+                                    <field name="midterm_score"/>
+                                    <field name="final_score"/>
+                                    <field name="total_score" readonly="1"/>
+                                    <field name="result" widget="badge" options="{'tag': 'span'}"
+                                           decoration-success="result=='pass'" decoration-danger="result=='fail'"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">Sinh viên</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

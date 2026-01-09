@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="subject_tree_view" model="ir.ui.view">
+        <field name="name">school.subject.tree</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <tree default_order="code">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="credits"/>
+                <field name="department_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="subject_form_view" model="ir.ui.view">
+        <field name="name">school.subject.form</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <form string="Môn học">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="credits"/>
+                        <field name="prerequisite_id" domain="[('id', '!=', id)]"/>
+                        <field name="department_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="subject_action" model="ir.actions.act_window">
+        <field name="name">Môn học</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
