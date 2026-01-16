@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="student_tree_view" model="ir.ui.view">
         <field name="name">school.student.tree</field>
         <field name="model">school.student</field>
@@ -12,6 +13,7 @@
                 <field name="email"/>
                 <field name="phone"/>
                 <field name="class_id"/>
+                <field name="user_id" string="Tài khoản"/>
                 <field name="department_id"/>
                 <field name="gpa_4" string="GPA (hệ 4)" widget="float" options="{'precision': 2}"/>
                 <field name="average_10" string="Điểm TB (hệ 10)" widget="float" options="{'precision': 2}"/>
@@ -20,6 +22,7 @@
             </tree>
         </field>
     </record>
+
     <record id="student_form_view" model="ir.ui.view">
         <field name="name">school.student.form</field>
         <field name="model">school.student</field>
@@ -51,6 +54,7 @@
                             <field name="gender"/>
                             <field name="email"/>
                             <field name="phone"/>
+                            <field name="user_id" options="{'no_create': True, 'no_open': True}" placeholder="Chọn tài khoản User..."/>
                         </group>
                         <group>
                             <field name="class_id"/>
@@ -104,9 +108,11 @@
             </form>
         </field>
     </record>
+
     <record id="student_action" model="ir.actions.act_window">
         <field name="name">Sinh viên</field>
         <field name="res_model">school.student</field>
         <field name="view_mode">tree,form</field>
     </record>
+
 </odoo>

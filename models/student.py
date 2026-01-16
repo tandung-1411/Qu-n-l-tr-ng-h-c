@@ -3,6 +3,13 @@ from odoo import models, fields, api
 class Student(models.Model):
     _name = 'school.student'
     _description = 'Sinh viên'
+
+    user_id = fields.Many2one(
+        'res.users',
+        string='Tài khoản người dùng',
+        required=True,
+    )
+
     code = fields.Char(string='Mã sinh viên', required=True)
     name = fields.Char(string='Họ tên', required=True)
     birth_date = fields.Date(string='Ngày sinh', required=True)
