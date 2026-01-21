@@ -7,3 +7,4 @@ from . import academic_year
 from . import semester
 from . import enrollment
 from . import grade
+from . import res_users
