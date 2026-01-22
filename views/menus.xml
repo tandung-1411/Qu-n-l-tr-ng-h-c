@@ -3,7 +3,7 @@
     <menuitem
         id="school_menu_root"
         name="Quản lý trường học"
-        sequence="10"/>
+        sequence="5"/>
     <menuitem
         id="school_menu_department"
         name="Khoa"
